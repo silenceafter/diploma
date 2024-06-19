@@ -1,0 +1,3 @@
+const AdminPoints = () => {};
+
+export {AdminPoints};

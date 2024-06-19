@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/app.Server/Migrations/20240516050513_InitialCreate.cs
+/app.Server/Migrations/20240516050513_InitialCreate.Designer.cs
+/app.Server/Migrations/EcodbContextModelSnapshot.cs

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace app.Server.Models;
 
@@ -11,5 +12,6 @@ public partial class Partner
 
     public string Description { get; set; } = null!;
 
+    [JsonIgnore]
     public virtual ICollection<Discount> Discounts { get; set; } = new List<Discount>();
 }

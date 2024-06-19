@@ -2,13 +2,14 @@
 using app.Server.Models;
 using app.Server.Repositories;
 using app.Server.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace app.Server.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("[controller]")]
     public class HazardousWasteController : Controller
     {
         private readonly ILogger<HazardousWasteController> _logger;
@@ -26,7 +27,8 @@ namespace app.Server.Controllers
             _hazardousWasteRepository = hazardousWasteRepository;
         }
 
-        [HttpGet]
+        [HttpGet("get-hazardous-waste")]
+        [Authorize(Policy = "AllowIfNoRoleClaim")]
         public async Task<IActionResult> GetHazardousWaste()
         {
             var data = await _hazardousWasteRepository.GetHazardousWasteAll();

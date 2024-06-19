@@ -1,0 +1,3 @@
+const AdminHazardWaste = () => {};
+
+export {AdminHazardWaste};

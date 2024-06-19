@@ -16,7 +16,7 @@ namespace app.Server.Repositories
             _context = context;
         }
 
-        public async Task<int> RegisterDispose(List<AcceptanceRequest> request)
+        public async Task<int> RegisterDispose(AcceptanceRequest request, User user)
         {
             using (var transaction = _context.Database.BeginTransaction())
             {
@@ -24,7 +24,6 @@ namespace app.Server.Repositories
                 {
                     int addedRows = 0;
                     int bonuses = 0;
-                    var user = await _context.Users.FindAsync(request[0].UserId);
 
                     //1 создать транзакцию приема отходов
                     var userTransaction = new Transaction()
@@ -41,19 +40,21 @@ namespace app.Server.Repositories
                     await _context.SaveChangesAsync();
                     var userTransactionId = userTransaction.Id;
 
-                    foreach (var item in request)
-                    {                        
-                        //2 добавить запись о приеме отходов
+                    //2 добавить запись о приеме отходов
+                    foreach (var item in request.WasteItems)
+                    {                                                
                         await _context.Acceptances.AddAsync(new Acceptance()
                         {
                             TransactionId = userTransactionId,
                             HazardousWasteId = item.HazardousWasteId,
-                            Date = DateTime.UtcNow.ToUniversalTime()
+                            Quantity = item.Quantity,
+                            Date = DateTime.UtcNow.ToUniversalTime(),
+                            PointId = request.PointId
                         });
                         
                         //считаем общее количество бонусов
                         var hazardousWaste = await _context.HazardousWastes.FindAsync(item.HazardousWasteId);
-                        bonuses += hazardousWaste.Bonuses;                        
+                        bonuses += hazardousWaste.Bonuses * item.Quantity;                        
 
                         //количество добавленных строк
                         addedRows += _context.ChangeTracker.Entries().Count(e => e.State == EntityState.Added);

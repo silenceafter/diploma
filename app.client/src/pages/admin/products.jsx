@@ -1,0 +1,3 @@
+const AdminProducts = () => {};
+
+export {AdminProducts};

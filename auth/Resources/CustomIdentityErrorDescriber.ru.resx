@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, ...</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, ...</value>
+	</resheader>
+	<data name="DuplicateUserName" xml:space="preserve">
+    <value>Имя пользователя '{0}' уже занято.</value>
+  </data>
+	<data name="InvalidEmail" xml:space="preserve">
+    <value>Email '{0}' недействителен.</value>
+  </data>
+	<data name="PasswordTooShort" xml:space="preserve">
+    <value>Пароль должен быть не менее {0} символов.</value>
+  </data>
+	<data name="PasswordRequiresNonAlphanumeric" xml:space="preserve">
+    <value>Пароль должен содержать хотя бы один неалфавитно-цифровой символ.</value>
+  </data>
+	<data name="PasswordRequiresDigit" xml:space="preserve">
+    <value>Пароль должен содержать хотя бы одну цифру ('0'-'9').</value>
+  </data>
+	<data name="PasswordRequiresLower" xml:space="preserve">
+    <value>Пароль должен содержать хотя бы одну строчную букву ('a'-'z').</value>
+  </data>
+	<data name="PasswordRequiresUpper" xml:space="preserve">
+    <value>Пароль должен содержать хотя бы одну заглавную букву ('A'-'Z').</value>
+  </data>
+</root>

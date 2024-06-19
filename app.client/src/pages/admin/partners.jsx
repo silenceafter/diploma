@@ -1,0 +1,3 @@
+const AdminPartners = () => {};
+
+export {AdminPartners};

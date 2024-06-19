@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "app.Server", "app.Server\app.Server.csproj", "{52F87C51-4415-4BB2-A61B-ACA94C95EE43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "app.server", "app.Server\app.server.csproj", "{52F87C51-4415-4BB2-A61B-ACA94C95EE43}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "app.client", "app.client\app.client.esproj", "{A66D6034-9E99-4CC5-A037-842390FF4D15}"
 EndProject
@@ -24,6 +24,7 @@ Global
 		{A66D6034-9E99-4CC5-A037-842390FF4D15}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A66D6034-9E99-4CC5-A037-842390FF4D15}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{A11FC558-F2B4-4F05-AF05-13B02F47AEDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A11FC558-F2B4-4F05-AF05-13B02F47AEDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A11FC558-F2B4-4F05-AF05-13B02F47AEDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A11FC558-F2B4-4F05-AF05-13B02F47AEDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection

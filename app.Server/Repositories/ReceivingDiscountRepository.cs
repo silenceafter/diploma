@@ -14,13 +14,12 @@ namespace app.Server.Repositories
             _context = context;
         }
 
-        public async Task<int> RegisterDiscountReserve(ReceivingDiscountRequest request)
+        public async Task<int> RegisterDiscountReserve(ReceivingDiscountRequest request, User user)
         {
             using (var transaction = _context.Database.BeginTransaction())
             {
                 try
                 {
-                    var user = await _context.Users.FindAsync(request.UserId);
                     var discount = await _context.Discounts.FindAsync(request.DiscountId);
                     var bonusesEnd = user.Bonuses - discount.Bonuses;
 
@@ -34,9 +33,11 @@ namespace app.Server.Repositories
                     //1 создать транзакцию о приобретении купона
                     var userTransaction = new Transaction()
                     {
-                        UserId = request.UserId,
+                        UserId = user.Id,//request.UserId,
                         TypeId = 2,
-                        Date = DateTime.UtcNow.ToUniversalTime()                        
+                        Date = DateTime.UtcNow.ToUniversalTime(),
+                        BonusesStart = user.Bonuses,
+                        BonusesEnd = user.Bonuses
                     };
                     await _context.Transactions.AddAsync(userTransaction);
 
@@ -55,7 +56,7 @@ namespace app.Server.Repositories
                     //3 создать пользовательскую транзакцию списания бонусов
                     userTransaction = new Transaction()
                     {
-                        UserId = request.UserId,
+                        UserId = user.Id,//request.UserId,
                         TypeId = 4,
                         Date = DateTime.UtcNow.ToUniversalTime(),
                         BonusesStart = user.Bonuses,
@@ -84,7 +85,9 @@ namespace app.Server.Repositories
 
         public async Task<IEnumerable<Discount>>? GetDiscountsAll()
         {
-            return await _context.Discounts.ToListAsync();
+            return await _context.Discounts
+                .Include(p => p.Partner)
+                .ToListAsync();
         }
     }
 }

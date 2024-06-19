@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using auth.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace auth.Data
@@ -9,5 +10,7 @@ namespace auth.Data
             : base(options)
         {
         }
+
+        public DbSet<BlacklistedToken> BlacklistedTokens { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace app.Server.Repositories.Interfaces
 {
     public interface IAcceptanceRepository
     {
-        public Task<int> RegisterDispose(List<AcceptanceRequest> request);
+        public Task<int> RegisterDispose(AcceptanceRequest request, User user);
         public bool UpdateDispose();
         public bool DeleteDispose();
         public Task<Acceptance>? GetDispose(int id);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace app.Server.Models;
 
@@ -11,5 +12,6 @@ public partial class HazardClass
 
     public string Description { get; set; } = null!;
 
+    [JsonIgnore]
     public virtual ICollection<HazardousWaste> HazardousWastes { get; set; } = new List<HazardousWaste>();
 }
